@@ -19,6 +19,7 @@ def translate_text(text, target_lang, service='google', api_key=None):
 def process_chunk(df_chunk):
     # Example processing function
     df_chunk['translated'] = df_chunk['spec'].apply(lambda x: translate_text(x, 'en'))
+    print(df_chunk,end='')
     return df_chunk
 
 def worker(process_idx, df_chunk, return_dict):
@@ -28,7 +29,7 @@ def worker(process_idx, df_chunk, return_dict):
 def main():
     file_path = 'orders (1).csv'
     df = pd.read_csv(file_path)
-
+    df.fillna('Unknown', inplace=True)
     num_processes = mp.cpu_count()
     chunk_size = 200  # Number of rows each process will handle
 
