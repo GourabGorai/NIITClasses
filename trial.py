@@ -105,10 +105,9 @@ y_test_pred = model.predict(X_test)
 y_2024_pred = model.predict(X_2024)
 
 # Calculate R^2 score and RMSE for 2024 data
+r22 = r2_score(y_test, y_test_pred)
 r2 = r2_score(y_2024, y_2024_pred)
-rmse = mean_squared_error(y_2024, y_2024_pred, squared=False)
-print(f'R^2 score for 2024 predictions: {r2:.2f}')
-print(f'RMSE for 2024 predictions: {rmse:.2f}')
+print(f'R^2 score for 2024 predictions and the the test cases: {r2:.2f}, {r22:.2f}')
 
 # Function to predict the price for a specific date
 def predict_price_for_date(model, lagged_price, date):
